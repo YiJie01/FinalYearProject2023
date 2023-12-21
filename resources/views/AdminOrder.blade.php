@@ -1,5 +1,5 @@
 @extends('AdminHome')
-@section('category')
+@section('FoodOrder')
 <!--category--->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -20,7 +20,7 @@
 </style>
 
 <br><br><br>
-
+@csrf
 <div class="container">
     <div class="row">
     
@@ -28,55 +28,58 @@
 
             <div class="panel panel-default panel-table">
               <div class="panel-heading">
-              @if(session()->has('deletemessage'))
-                <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert">x</button>
-                    {{session()->get('deletemessage')}}
-
-                </div>
-              @endif
                 <div class="row">
                   <div class="col col-xs-6">
-                    <h3 class="panel-title">Add Category</h3>
+                    <h3 class="panel-title">Food Order</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create"  onclick="window.location.href='/addCategory';">Create New</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-create"  onclick="window.location.href='/addFood';">Create New</button>
                   </div>
                 </div>
               </div>
+              <form action="{{ route('paymented') }}" method="post">
               <div class="panel-body">
                 <table class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
                         <th class="hidden-xs">ID</th>
-                        <th>Category Name</th>
-                        
+                        <th>Order ID</th>
+                        <th>User</th>
+                        <th>Food ID</th>
+                        <th>Amount</th>
+                        <th>Status</th>   
                     </tr> 
                   </thead>
                   <tbody>
-                    @foreach($categories as $category)
+                  @foreach($orders as $order)
                           <tr>
                             <td align="">
-                              <a href="{{route('editCategory',['id'=>$category->id])}}" class="btn btn-default" ><em class="fa fa-pencil"></em></a>
-                              <a href="{{route('deleteCategory',['id'=>$category->id])}}" class="btn btn-danger" onClick="return confirm('Are you sure to delete?')"><em class="fa fa-trash"></em></a>
+                              <a href="/paymented" class="btn btn-default" ><em class="fa fa-check"></em></a>
+                              <a href="" class="btn btn-danger" onClick="return confirm('Are you sure to delete?')"><em class="fa fa-trash"></em></a>
                             </td>
-                            <td class="hidden-xs">{{$category->id}}</td>
-                            <td>{{$category->name}}</td>
+                            <td class="hidden-xs">{{$order->id}}</td>
+                            <td>{{$order->orderID}}</td>
+                            <td>{{$order->userID}}</td>
+                            <td>{{$order->foodID}}</td>
+                            <td>{{$order->amount}}</td>
+                            <td>{{$order->paymentStatus}}</td>
                           </tr>
-                    @endforeach
+                          @endforeach
                         </tbody>
                 </table>
             
               </div>
+
+            </form>
               <div class="panel-footer">
                 <div class="row">
                   <div class="col col-xs-4">
                   </div>
                   <div class="col col-xs-8">
-                    <ul class="pagination visible-xs pull-right">
+                    <ul class="pagination hidden-xs pull-right">
 
-                    
+                      
                     </ul>
 
                   </div>

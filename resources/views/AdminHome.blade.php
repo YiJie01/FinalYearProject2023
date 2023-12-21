@@ -78,34 +78,39 @@
 	</nav>
 <!---->
 
-	<div class="container-fluid main-container">
+	<div class="container-fluid main-container" >
 		<div class="col-md-2 sidebar">
 			<ul class="nav nav-pills nav-stacked">
-				<li class="active"><a href="/Admin">Home</a></li>
-				<li><a href="/insertGame">Upload/Update Product</a></li>
+				<li class="active"><a href="/admin">Home</a></li>
+				<!--<li><a href="">Upload/Update Food</a></li>-->
 				<!--<li><a href="#">//Update Support</a></li>-->
-				<li><a href="/ProductMenu">View All Product</a></li>
-				<li><a href="/UserRefund">User Refund Product</a></li>
-				<li><a href="/Support">Upload/Update Support</a></li>
-				<li><a href="/manageSupport">View All Support</a></li>
+				<li><a href="/foodManage">Food Manage</a></li>
+				<li><a href="/categorylist">Category Manage</a></li>
+				<li><a href="/adminorder">Order</a></li>
+				<li><a href="/adminReserve">Reserve</a></li>
 			</ul>
 		</div>
 		
-		<div class="col-md-10 content">
+		<div class="col-md-10 content" >
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Welcome Admin!
                 </div>
-				<div class="backgroup">
+				<div class="backgroup" style="background-color:#000040;">
 				<div class="panel-body">
 					@yield('AdminNameList')
                 </div>
                 <div class="panel-body">
-					@yield('insertpage')
-					@yield('updatepage')
-					@yield('allRefund')
-					@yield('support')
-					@yield('MS')
+					@yield('category')
+					@yield('AddCategoryPage')
+					@yield('EditCategoryPage')
+					@yield('foodmanage')
+					@yield('AddFoodPage')
+					@yield('EditFoodPage')
+					@yield('FoodOrder')
+					@yield('reserve')
+					@yield('')
+
                 </div>
 				<div class="panel-body">
 					@yield('productmenu')

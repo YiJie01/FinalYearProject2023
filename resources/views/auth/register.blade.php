@@ -38,7 +38,16 @@
                                 @enderror
                             </div>
                         </div>
+<!--
+                        <div class="row mb-3">
+                            <label for="birthday" class="col-md-4 col-form-label text-md-end">{{ __('Birthday') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="birthday" type="" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday">
+
+                            </div>
+                        </div>
+-->
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 

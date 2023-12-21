@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,6 +22,8 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    
+    
     /**
      * Where to redirect users after login.
      *
@@ -35,6 +38,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        //(in_array(request()->email, ['user01@hotmail.com', 'zxxx'])) if have many people use it
+            if(request()->email == 'admin00@hotmail.com')
+                {
+                    $this->redirectTo = RouteServiceProvider::ADMIN_HOME;
+                }
+            else{
+                    $this->redirectTo = RouteServiceProvider::HOME;
+                }
+
+                
         $this->middleware('guest')->except('logout');
     }
 }
